@@ -124,7 +124,7 @@
     <value>Весь подвижной состав</value>
   </data>
   <data name="and_add_as_rule" xml:space="preserve">
-    <value>и добавить как правило</value>
+    <value>Добавить как правило</value>
   </data>
   <data name="apply" xml:space="preserve">
     <value>Применить</value>
@@ -151,7 +151,7 @@
     <value>Закрыть</value>
   </data>
   <data name="completion" xml:space="preserve">
-    <value>Завершение</value>
+    <value>Завершён</value>
   </data>
   <data name="completion_completedfailed" xml:space="preserve">
     <value>Неудачно</value>
@@ -160,7 +160,7 @@
     <value>Успешно</value>
   </data>
   <data name="completion_notcompleted" xml:space="preserve">
-    <value />
+    <value>Не завершён</value>
   </data>
   <data name="completion_notindb" xml:space="preserve">
     <value />
@@ -169,7 +169,7 @@
     <value>?</value>
   </data>
   <data name="consists_in_scenario" xml:space="preserve">
-    <value>Подвижной состав в сценарии</value>
+    <value>Поезда в сценарии</value>
   </data>
   <data name="delete" xml:space="preserve">
     <value>Удалить</value>
@@ -274,7 +274,7 @@
     <value>Доступ для сохранения сценария запрещен. Пожалуйста, проверьте, что файлы Scenario.bin и ScenarioProperties.xml не защищены от перезаписи.</value>
   </data>
   <data name="name" xml:space="preserve">
-    <value>Имя</value>
+    <value>Название</value>
   </data>
   <data name="new_vehicle_selected" xml:space="preserve">
     <value>Новый подвижной состав</value>
@@ -361,7 +361,7 @@
     <value>Удаление сценариев</value>
   </data>
   <data name="scenario_in_ap" xml:space="preserve">
-    <value>*** Этот сценарий содержится в .ap файле Loco Swap автоматически извлечёт его при сохранении. ***</value>
+    <value>*** Этот сценарий в .ap файле LocoSwap автоматически извлечёт его при сохранении. ***</value>
   </data>
   <data name="scenario_name_suffix" xml:space="preserve">
     <value>Суффикс имени сценария</value>
@@ -397,7 +397,7 @@
     <value>Использовать системный язык</value>
   </data>
   <data name="vehicles_in_selected_consist" xml:space="preserve">
-    <value>Объекты в выбранном составе</value>
+    <value>Подвижной состав в выбранном поезде</value>
   </data>
   <data name="vehicle_selected" xml:space="preserve">
     <value>Выбранный подвижной состав</value>
