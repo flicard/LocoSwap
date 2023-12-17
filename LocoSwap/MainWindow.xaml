@@ -5,9 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:lang="clr-namespace:LocoSwap.Language;assembly=LocoSwap.Language"
         xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+        xmlns:converters="clr-namespace:LocoSwap.Converters"
         mc:Ignorable="d"
         Title="{Binding WindowTitle}" Height="701" Width="1125">
     <Window.Resources>
+        <converters:ScenarioStatusToImageConverter x:Key="ScenarioStatusToImageConverter" />
+        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        
         <CollectionViewSource Source="{Binding Routes}" x:Key="RoutesSource" IsLiveSortingRequested="True">
             <CollectionViewSource.SortDescriptions>
                 <scm:SortDescription PropertyName="IsFavorite" Direction="Descending" />
@@ -88,6 +92,13 @@
             </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
+                    <GridViewColumn x:Name="CheckScenarioConsists" Width="20">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding IsComplete, Converter={StaticResource ScenarioStatusToImageConverter}}" Width="8" Height="8" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                     <GridViewColumn Header="{x:Static lang:Resources.name}" Width="350" DisplayMemberBinding="{Binding Name}" />
                     <GridViewColumn Header="{x:Static lang:Resources.id}" Width="75" DisplayMemberBinding="{Binding Id}" />
                     <GridViewColumn Header="{x:Static lang:Resources.player_train_name}" Width="auto" DisplayMemberBinding="{Binding PlayerTrainName}" />

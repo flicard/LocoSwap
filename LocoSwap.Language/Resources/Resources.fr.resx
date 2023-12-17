@@ -144,6 +144,9 @@
   <data name="change_number" xml:space="preserve">
     <value>Changer numérotation</value>
   </data>
+  <data name="check_scenario_consists" xml:space="preserve">
+    <value>Le scénario de contrôle consiste lors de la sélection de l'itinéraire</value>
+  </data>
   <data name="clear_vehicles" xml:space="preserve">
     <value>Vider</value>
   </data>

@@ -94,6 +94,7 @@
       <DependentUpon>AllVehiclesWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="AvailableVehicle.cs" />
+    <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="ScenarioDb.cs" />
     <Compile Include="Consist.cs" />
     <Compile Include="Converters\StatusToImageConverter.cs" />

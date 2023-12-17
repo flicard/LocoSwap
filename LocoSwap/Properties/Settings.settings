@@ -20,5 +20,8 @@
     <Setting Name="ScenarioNameSuffix" Type="System.String" Scope="User">
       <Value Profile="(Default)">[LoSw]</Value>
     </Setting>
+    <Setting Name="CheckScenarioConsists" Type="System.String" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

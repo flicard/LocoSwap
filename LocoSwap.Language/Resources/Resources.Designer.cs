@@ -142,6 +142,15 @@ namespace LocoSwap.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Check scenario consists when selecting route.
+        /// </summary>
+        public static string check_scenario_consists {
+            get {
+                return ResourceManager.GetString("check_scenario_consists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Clear.
         /// </summary>
         public static string clear_vehicles {

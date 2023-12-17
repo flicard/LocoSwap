@@ -135,6 +135,9 @@
   <data name="change_number" xml:space="preserve">
     <value>Nummer ändern</value>
   </data>
+  <data name="check_scenario_consists" xml:space="preserve">
+    <value>Überprüfen Sie das Szenario bei der Auswahl der Route</value>
+  </data>
   <data name="clear_vehicles" xml:space="preserve">
     <value>Löschen</value>
   </data>

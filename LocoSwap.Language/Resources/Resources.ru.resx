@@ -132,6 +132,9 @@
   <data name="change_number" xml:space="preserve">
     <value>Изменить номер</value>
   </data>
+  <data name="check_scenario_consists" xml:space="preserve">
+    <value>Сценарий проверки заключается в выборе маршрута.</value>
+  </data>
   <data name="clear_vehicles" xml:space="preserve">
     <value>очищать</value>
   </data>

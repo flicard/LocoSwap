@@ -7,7 +7,7 @@
         xmlns:p="clr-namespace:LocoSwap.Properties"
         xmlns:lang="clr-namespace:LocoSwap.Language;assembly=LocoSwap.Language"
         mc:Ignorable="d"
-        Title="{x:Static lang:Resources.settings}" Height="185.215" Width="460.327" Closed="Window_Closed">
+        Title="{x:Static lang:Resources.settings}" Height="200" Width="460.327" Closed="Window_Closed">
     <Grid>
         <Label Content="{x:Static lang:Resources.ts_directory}" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Label Content="{x:Static lang:Resources.language}" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
@@ -23,6 +23,13 @@
             SelectedValue="{Binding Source={x:Static p:Settings.Default}, Path=Language, Mode=TwoWay}" SelectionChanged="LanguageComboBox_SelectionChanged"/>
         <Button x:Name="CloseButton" Content="{x:Static lang:Resources.close}" Margin="0,0,9.5,9.5" HorizontalAlignment="Right" Width="75" Click="CloseButton_Click" Height="20" VerticalAlignment="Bottom"/>
         <TextBox Text="{Binding Source={x:Static p:Settings.Default}, Path=ScenarioNameSuffix, Mode=TwoWay}"  Margin="154,81,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120"/>
-
+        <CheckBox IsChecked="{Binding Source={x:Static p:Settings.Default}, Path=CheckScenarioConsists, Mode=TwoWay}" Content="{x:Static lang:Resources.check_scenario_consists}" Margin="14.5,109.5,10,0" VerticalAlignment="Top" HorizontalAlignment="Left" FlowDirection="RightToLeft">
+            <CheckBox.Resources>
+                <Style TargetType="{x:Type Path}">
+                    <Setter Property="FlowDirection" Value="LeftToRight"/>
+                </Style>
+            </CheckBox.Resources>
+        </CheckBox>
+        
     </Grid>
 </Window>

@@ -1,4 +1,5 @@
 ﻿using Ionic.Zip;
+using LocoSwap.Properties;
 using Serilog;
 using System;
 using System.Collections.ObjectModel;
@@ -27,6 +28,7 @@ namespace LocoSwap
         public MainWindow()
         {
             InitializeComponent();
+            UpdateColumnVisibility();
 
             this.DataContext = this;
             this.WindowTitle = "LocoSwap " + Assembly.GetEntryAssembly().GetName().Version.ToString();
@@ -137,8 +139,9 @@ namespace LocoSwap
                         }
                     }
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
+                    Log.Debug(e.ToString());
                 }
             }
         }
@@ -164,6 +167,10 @@ namespace LocoSwap
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
             new SettingsWindow().ShowDialog();
+            if (checkScenarioConsistsVisible != Settings.Default.CheckScenarioConsists)
+            {
+                UpdateColumnVisibility();
+            }
         }
 
         private void ScenarioList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -186,7 +193,10 @@ namespace LocoSwap
                 {
                     scenario.Delete();
                 }
-                Refresh_Scenario_List();
+                if (RouteList.SelectedItem != null)
+                {
+                    Refresh_Scenario_List();
+                }
             }
         }
 
@@ -274,6 +284,47 @@ namespace LocoSwap
         public void HidePlayedScenario_CheckboxChanged(object sender, RoutedEventArgs e)
         {
             CollectionViewSource.GetDefaultView(ScenarioList.ItemsSource).Refresh();
+        }
+
+        String checkScenarioConsistsVisible = "True";
+        private void UpdateColumnVisibility()
+        {
+            if (Settings.Default.CheckScenarioConsists == "True")
+            {
+                AddColumnIfNotExists(CheckScenarioConsists);
+            }
+            else
+            {
+                RemoveColumnIfExists(CheckScenarioConsists);
+            }
+        }
+
+        private void AddColumnIfNotExists(GridViewColumn column)
+        {
+            GridView gridView = ScenarioList.View as GridView;
+            if (gridView != null && !gridView.Columns.Contains(column))
+            {
+                gridView.Columns.Insert(0, column);
+            }
+            if (RouteList.SelectedItem != null)
+            {
+                Refresh_Scenario_List();
+            }
+            checkScenarioConsistsVisible = "True";
+        }
+
+        private void RemoveColumnIfExists(GridViewColumn column)
+        {
+            GridView gridView = ScenarioList.View as GridView;
+            if (gridView != null && gridView.Columns.Contains(column))
+            {
+                gridView.Columns.Remove(column);
+            }
+            if (RouteList.SelectedItem != null)
+            {
+                Refresh_Scenario_List();
+            }
+            checkScenarioConsistsVisible = "False";
         }
     }
 }
