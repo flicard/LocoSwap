@@ -120,8 +120,20 @@
   <data name="add_to_rules" xml:space="preserve">
     <value>Добавить в правила</value>
   </data>
+  <data name="all_vehicles" xml:space="preserve">
+    <value>Весь подвижной состав</value>
+  </data>
+  <data name="and_add_as_rule" xml:space="preserve">
+    <value>Добавить как правило</value>
+  </data>
   <data name="apply" xml:space="preserve">
     <value>Применить</value>
+  </data>
+  <data name="apply_all_rules" xml:space="preserve">
+    <value>Применить все правила</value>
+  </data>
+  <data name="author" xml:space="preserve">
+    <value>Автор</value>
   </data>
   <data name="browse" xml:space="preserve">
     <value>Указать...</value>
@@ -133,16 +145,40 @@
     <value>Изменить номер</value>
   </data>
   <data name="clear_vehicles" xml:space="preserve">
-    <value>очищать</value>
+    <value>Очистить</value>
   </data>
   <data name="close" xml:space="preserve">
     <value>Закрыть</value>
   </data>
+  <data name="completion" xml:space="preserve">
+    <value>Завершён</value>
+  </data>
+  <data name="completion_completedfailed" xml:space="preserve">
+    <value>Неудачно</value>
+  </data>
+  <data name="completion_completedsuccessfully" xml:space="preserve">
+    <value>Успешно</value>
+  </data>
+  <data name="completion_notcompleted" xml:space="preserve">
+    <value>Не завершён</value>
+  </data>
+  <data name="completion_notindb" xml:space="preserve">
+    <value />
+  </data>
+  <data name="completion_unknown" xml:space="preserve">
+    <value>?</value>
+  </data>
   <data name="consists_in_scenario" xml:space="preserve">
-    <value>Подвижной состав в сценарии</value>
+    <value>Поезда в сценарии</value>
   </data>
   <data name="delete" xml:space="preserve">
     <value>Удалить</value>
+  </data>
+  <data name="delete_scenarios" xml:space="preserve">
+    <value>Удалить сценарии</value>
+  </data>
+  <data name="duration" xml:space="preserve">
+    <value>Продолжительность</value>
   </data>
   <data name="edit_scenario" xml:space="preserve">
     <value>Редактировать сценарий</value>
@@ -153,23 +189,50 @@
   <data name="enter_number_manually" xml:space="preserve">
     <value>или введите номер вручную:</value>
   </data>
+  <data name="error_cannot_read_scenario" xml:space="preserve">
+    <value>Ошибка: детали сценария не могут быть прочитаны (неправильный XML)</value>
+  </data>
+  <data name="filter" xml:space="preserve">
+    <value>Фильтр</value>
+  </data>
   <data name="flip" xml:space="preserve">
     <value>Развернуть объект</value>
   </data>
   <data name="flipped" xml:space="preserve">
     <value>Развёрнут?</value>
   </data>
+  <data name="game_save_date" xml:space="preserve">
+    <value>Сохранить дату</value>
+  </data>
+  <data name="hide_played_scenarios" xml:space="preserve">
+    <value>Скрыть сыгранные сценарии</value>
+  </data>
   <data name="id" xml:space="preserve">
     <value>ID</value>
   </data>
+  <data name="insert_after" xml:space="preserve">
+    <value>Вставить v</value>
+  </data>
+  <data name="insert_before" xml:space="preserve">
+    <value>Вставить ^</value>
+  </data>
+  <data name="involved_in_consist_operation" xml:space="preserve">
+    <value>Это объект задействован в инструкциях по сцеплению/расцеплению. При замене локомотива его номер сохранится.</value>
+  </data>
   <data name="language" xml:space="preserve">
     <value>Язык</value>
+  </data>
+  <data name="loading" xml:space="preserve">
+    <value>Загрузка...</value>
   </data>
   <data name="look_up_vehicles" xml:space="preserve">
     <value>Поиск подвижного состава</value>
   </data>
   <data name="msg_cannot_load_vehicle" xml:space="preserve">
     <value>Невозможно загрузить объект "{0}"!</value>
+  </data>
+  <data name="msg_consist_empty" xml:space="preserve">
+    <value>После удаления в составе должен быть по крайней мере один объект!</value>
   </data>
   <data name="msg_error" xml:space="preserve">
     <value>Ошибка</value>
@@ -211,7 +274,7 @@
     <value>Доступ для сохранения сценария запрещен. Пожалуйста, проверьте, что файлы Scenario.bin и ScenarioProperties.xml не защищены от перезаписи.</value>
   </data>
   <data name="name" xml:space="preserve">
-    <value>Имя</value>
+    <value>Название</value>
   </data>
   <data name="new_vehicle_selected" xml:space="preserve">
     <value>Новый подвижной состав</value>
@@ -228,20 +291,35 @@
   <data name="ok" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="only_on_missing_stock" xml:space="preserve">
+    <value>только в недостающем подвижном составе (желтые)</value>
+  </data>
+  <data name="on_all_stock" xml:space="preserve">
+    <value>во всём подвижном составе</value>
+  </data>
   <data name="open_scenario_directory" xml:space="preserve">
     <value>Открыть папку сценария</value>
   </data>
   <data name="path" xml:space="preserve">
     <value>Путь</value>
   </data>
+  <data name="player_train_name" xml:space="preserve">
+    <value>Поезд игрока</value>
+  </data>
   <data name="reading_scenario_files" xml:space="preserve">
     <value>Чтение файлов сценария...</value>
+  </data>
+  <data name="remove" xml:space="preserve">
+    <value>Удалить</value>
   </data>
   <data name="replace" xml:space="preserve">
     <value>Заменить</value>
   </data>
   <data name="replacement_rules" xml:space="preserve">
     <value>Правила замены</value>
+  </data>
+    <data name="replacement_rules_management" xml:space="preserve">
+    <value>Управление правилами замены</value>
   </data>
   <data name="replace_identical" xml:space="preserve">
     <value>Заменить идентичные</value>
@@ -251,6 +329,9 @@
   </data>
   <data name="route" xml:space="preserve">
     <value>Маршрут</value>
+  </data>
+  <data name="rule" xml:space="preserve">
+    <value>Правило</value>
   </data>
   <data name="rule_find" xml:space="preserve">
     <value>Искать...</value>
@@ -273,11 +354,41 @@
   <data name="scenario" xml:space="preserve">
     <value>Сценарий</value>
   </data>
+  <data name="scenario_delete_prompt_message" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить выбранные сценарии?</value>
+  </data>
+  <data name="scenario_delete_prompt_title" xml:space="preserve">
+    <value>Удаление сценариев</value>
+  </data>
+  <data name="scenario_in_ap" xml:space="preserve">
+    <value>*** Этот сценарий в .ap файле LocoSwap автоматически извлечёт его при сохранении. ***</value>
+  </data>
+  <data name="scenario_name_suffix" xml:space="preserve">
+    <value>Суффикс имени сценария</value>
+  </data>
+  <data name="season" xml:space="preserve">
+    <value>Сезон</value>
+  </data>
+  <data name="season_autumn" xml:space="preserve">
+    <value>Осень</value>
+  </data>
+  <data name="season_spring" xml:space="preserve">
+    <value>Весна</value>
+  </data>
+  <data name="season_summer" xml:space="preserve">
+    <value>Лето</value>
+  </data>
+  <data name="season_winter" xml:space="preserve">
+    <value>Зима</value>
+  </data>
   <data name="select_ts_path" xml:space="preserve">
     <value>Укажите путь к Train Simulator</value>
   </data>
   <data name="settings" xml:space="preserve">
     <value>Настройки</value>
+  </data>
+  <data name="start_time" xml:space="preserve">
+    <value>Время начала</value>
   </data>
   <data name="ts_directory" xml:space="preserve">
     <value>Папка Train Simulator</value>
@@ -286,7 +397,10 @@
     <value>Использовать системный язык</value>
   </data>
   <data name="vehicles_in_selected_consist" xml:space="preserve">
-    <value>Объекты в выбранном составе</value>
+    <value>Подвижной состав в выбранном поезде</value>
+  </data>
+  <data name="vehicle_selected" xml:space="preserve">
+    <value>Выбранный подвижной состав</value>
   </data>
   <data name="vehicle_to_be_replaced" xml:space="preserve">
     <value>Заменяемый подвижной состав</value>
