@@ -300,6 +300,9 @@
   <data name="on_all_stock" xml:space="preserve">
     <value>on all stock</value>
   </data>
+  <data name="open_manual" xml:space="preserve">
+    <value>Open manual</value>
+  </data>
   <data name="open_scenario_directory" xml:space="preserve">
     <value>Open scenario directory</value>
   </data>

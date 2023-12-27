@@ -71,19 +71,11 @@ namespace LocoSwap
                 ReskinProduct = "";
             }
 
-            if (!IsInvolvedInConsistOperation)
+            if (!IsInvolvedInConsistOperation && from.NumberingList.Count > 0)
             {
-                if (from.NumberingList.Count > 0)
-                {
-                    int index = Utilities.StaticRandom.Instance.Next(from.NumberingList.Count);
-                    Number = from.NumberingList[index];
-                }
-                else
-                {
-                    Number = new Guid().ToString();
-                }
+                int index = Utilities.StaticRandom.Instance.Next(from.NumberingList.Count);
+                Number = from.NumberingList[index];
             }
         }
-
     }
 }

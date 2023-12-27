@@ -326,5 +326,10 @@ namespace LocoSwap
             }
             checkScenarioConsistsVisible = "False";
         }
+        
+        public void OpenManual_Click(object sender, RoutedEventArgs e)
+        {
+            Utilities.OpenManual();
+        }
     }
 }

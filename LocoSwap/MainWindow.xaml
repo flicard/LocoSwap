@@ -111,7 +111,20 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="{x:Static lang:Resources.edit_scenario}" IsEnabled="{Binding ElementName=ScenarioList, Path=SelectedItems.Count}" HorizontalAlignment="Left" Margin="14,0,0,13" Width="145" Click="EditScenarioButton_Click" VerticalAlignment="Bottom"/>
+        <Button Content="{x:Static lang:Resources.edit_scenario}" HorizontalAlignment="Left" Margin="14,0,0,13" Width="145" Click="EditScenarioButton_Click" VerticalAlignment="Bottom">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Style.Triggers>
+                        <DataTrigger
+                            Binding="{Binding ElementName=ScenarioList, Path=SelectedItems.Count}"
+                            Value="1">
+                            <Setter Property="IsEnabled" Value="true"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
         <Button Content="{x:Static lang:Resources.open_scenario_directory}" IsEnabled="{Binding ElementName=ScenarioList, Path=SelectedItems.Count}" HorizontalAlignment="Left" Margin="164,0,0,13"  Width="172" Click="OpenScenarioDirButton_Click" VerticalAlignment="Bottom"/>
         <Button x:Name="SettingsButton" Content="{x:Static lang:Resources.settings}" Width="150" Margin="0,0,10,14" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="SettingsButton_Click"/>
         <Button Content="{x:Static lang:Resources.delete_scenarios}" IsEnabled="{Binding SelectedItems.Count, ElementName=ScenarioList}" HorizontalAlignment="Left" Margin="341,0,0,13"  Width="172"  Click="Delete_Scenarios_Click" VerticalAlignment="Bottom"/>
@@ -125,6 +138,9 @@
         </Button>
         <Button HorizontalAlignment="Left" Margin="175,240,0,0" VerticalAlignment="Top" Height="18" Click="EmptyScenarioFilter_Click">
             <Image Source="/Resources/Delete.png"/>
+        </Button>
+        <Button HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Height="18" ToolTip="{x:Static lang:Resources.open_manual}" Click="OpenManual_Click">
+            <Image Source="/Resources/Help.png"/>
         </Button>
     </Grid>
 </Window>

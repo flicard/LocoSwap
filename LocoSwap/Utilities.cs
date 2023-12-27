@@ -183,5 +183,14 @@ namespace LocoSwap
 
             public static Random Instance { get { return threadLocal.Value; } }
         }
+
+        public static void OpenManual()
+        {
+            string manualFileName = "LocoSwap_manual.pdf";
+            if (File.Exists(manualFileName))
+            {
+                System.Diagnostics.Process.Start(manualFileName);
+            }
+        }
     }
 }

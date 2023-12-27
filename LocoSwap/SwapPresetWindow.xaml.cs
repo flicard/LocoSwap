@@ -61,7 +61,9 @@ namespace LocoSwap
 
             string[] filteredProperties = {
                 candidateSwapPresetItem.NewName,
-                candidateSwapPresetItem.TargetName
+                candidateSwapPresetItem.NewXmlPath,
+                candidateSwapPresetItem.TargetName,
+                candidateSwapPresetItem.TargetXmlPath
             };
 
             return PresetsFilterTextbox.Text.Split(' ').All(

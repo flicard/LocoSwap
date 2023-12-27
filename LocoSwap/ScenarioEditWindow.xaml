@@ -31,8 +31,8 @@
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="{Binding IsComplete, Converter={StaticResource ConsistStatusToImageConverter}}" Width="8" Height="8" />
-                        <TextBlock Text="{Binding Name}" Margin="10,0,0,0" />
-                        <Image Visibility="{Binding IsPlayerConsist, Converter={StaticResource BoolToVis}}" Source="/LocoSwap;component/Resources/Player.png" Margin="5,1,0,0" Width="8" Height="8" />
+                        <Image Visibility="{Binding IsPlayerConsist, Converter={StaticResource BoolToVis}}" Source="/LocoSwap;component/Resources/Player.png" Margin="5,0,0,0" Width="8" Height="8" />
+                        <TextBlock Text="{Binding Name}" Margin="5,0,0,0" />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
@@ -69,7 +69,20 @@
                 <Label Content="{x:Static lang:Resources.path}" HorizontalAlignment="Left" Margin="0,70,0,0" VerticalAlignment="Top"/>
                 <TextBox HorizontalAlignment="Left" Height="39" Margin="0,101,0,0" TextWrapping="Wrap" Text="{Binding SelectedItem.DisplayXmlPath, Mode=OneWay, ElementName=VehicleListBox, StringFormat='\\Assets\\\{0\}'}" VerticalAlignment="Top" Width="270" IsReadOnly="True" VerticalScrollBarVisibility="Auto"/>
                 <Image Source="{Binding SelectedItem, Mode=OneWay, ElementName=VehicleListBox, Converter={StaticResource VehicleImageSourceConverter}}" HorizontalAlignment="Left" Height="111" Margin="0,145,0,0" VerticalAlignment="Top" Width="124"/>
-                <Button x:Name="ChangeNumberButton" Content="{x:Static lang:Resources.change_number}" IsEnabled="{Binding ElementName=VehicleListBox, Path=SelectedItems.Count}" HorizontalAlignment="Left" Margin="0,0,0,10" Width="125" Click="ChangeNumberButton_Click" VerticalContentAlignment="Center" VerticalAlignment="Bottom" Height="26"/>
+                <Button x:Name="ChangeNumberButton" Content="{x:Static lang:Resources.change_number}" HorizontalAlignment="Left" Margin="0,0,0,10" Width="125" Click="ChangeNumberButton_Click" VerticalContentAlignment="Center" VerticalAlignment="Bottom" Height="26">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Style.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding ElementName=VehicleListBox, Path=SelectedItems.Count}"
+                                    Value="1">
+                                    <Setter Property="IsEnabled" Value="true"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
                 <CheckBox Content="{x:Static lang:Resources.flipped}" Margin="0,76,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" IsChecked="{Binding SelectedItem.Flipped, Mode=OneWay, ElementName=VehicleListBox}" IsEnabled="False" />
                 <Button x:Name="FlipButton" Content="{x:Static lang:Resources.flip}" IsEnabled="{Binding ElementName=VehicleListBox, Path=SelectedItems.Count}" HorizontalAlignment="Left" Margin="145,0,0,10.429" Width="125" VerticalContentAlignment="Center" VerticalAlignment="Bottom" Height="26" Click="FlipButton_Click"/>
                 <TextBlock HorizontalAlignment="Left" Margin="145,149,0,0" TextWrapping="Wrap" Visibility="{Binding SelectedItem.IsInvolvedInConsistOperation, Converter={StaticResource BoolToVis}, FallbackValue=Collapsed, ElementName=VehicleListBox}" Text="{x:Static lang:Resources.involved_in_consist_operation}" VerticalAlignment="Top" Height="112" Width="125" Foreground="#FFF41818"/>
@@ -95,7 +108,7 @@
                 <Label Content="{x:Static lang:Resources.path}" HorizontalAlignment="Left" Margin="0,49,0,0" VerticalAlignment="Top"/>
                 <TextBox HorizontalAlignment="Left" Height="40" Margin="0,75,0,0" TextWrapping="Wrap" Text="{Binding SelectedItem.DisplayXmlPath, Mode=OneWay, ElementName=AvailableVehicleListBox, StringFormat='\\Assets\\\{0\}'}" VerticalAlignment="Top" Width="270" IsReadOnly="True" VerticalScrollBarVisibility="Auto"/>
                 <Image Source="{Binding SelectedItem, Mode=OneWay, ElementName=AvailableVehicleListBox, Converter={StaticResource VehicleImageSourceConverter}}" Height="134" Margin="0,130,10,0" VerticalAlignment="Top"/>
-                <Button x:Name="AvailableVehicleNumberListButton" Content="{x:Static lang:Resources.numbering_list}" HorizontalAlignment="Left" Margin="0,269,0,0" VerticalAlignment="Top" Width="125" Height="26" Click="AvailableVehicleNumberListButton_Click"/>
+                <Button x:Name="AvailableVehicleNumberListButton" Content="{x:Static lang:Resources.numbering_list}" IsEnabled="{Binding ElementName=AvailableVehicleListBox, Path=SelectedItems.Count}" HorizontalAlignment="Left" Margin="0,269,0,0" VerticalAlignment="Top" Width="125" Height="26" Click="AvailableVehicleNumberListButton_Click"/>
             </Grid>
         </GroupBox>
         <ListBox x:Name="AvailableVehicleListBox" ItemsSource="{Binding Source={StaticResource AvailableVehiclesSource}}" Margin="955,500,20,10">
@@ -120,7 +133,10 @@
         <Button IsEnabled="{Binding SaveButtonEnabled}" x:Name="SaveButton" Content="{x:Static lang:Resources.save}" Margin="0,13,20,0" VerticalAlignment="Top" Click="SaveButton_Click" HorizontalAlignment="Right" Width="84"/>
         <Button x:Name="ReplaceButton" Content="{x:Static lang:Resources.replace}" HorizontalAlignment="Left" Margin="627,467,0,0" VerticalAlignment="Top" Width="300" Height="26" Click="ReplaceButton_Click"/>
         <Button x:Name="PresetButton" Content="{x:Static lang:Resources.replacement_rules}" Margin="0,13,109,0" VerticalAlignment="Top" Click="PresetButton_Click" HorizontalAlignment="Right" Width="155"/>
-        <Button IsEnabled="{Binding SaveButtonEnabled}" x:Name="AllVehiclesListButton" Content="{x:Static lang:Resources.all_vehicles}" Margin="0,38,20,0" VerticalAlignment="Top" Click="AllVehiclesListButton_Click" HorizontalAlignment="Right" Width="244"/>
+        <Button IsEnabled="{Binding SaveButtonEnabled}" x:Name="AllVehiclesListButton" Content="{x:Static lang:Resources.all_vehicles}" Margin="0,38,45,0" VerticalAlignment="Top" Click="AllVehiclesListButton_Click" HorizontalAlignment="Right" Width="219"/>
+        <Button HorizontalAlignment="Right" Margin="0,38,20,0" VerticalAlignment="Top" Height="20" ToolTip="{x:Static lang:Resources.open_manual}" Click="OpenManual_Click">
+            <Image Source="/Resources/Help.png"/>
+        </Button>
         <Button x:Name="InsertBeforeButton" Content="{x:Static lang:Resources.insert_before}" HorizontalAlignment="Left" Margin="627,405,0,0" VerticalAlignment="Top" Width="148" Height="26" Click="InsertBeforeButton_Click"/>
         <Button x:Name="InsertAfterButton" Content="{x:Static lang:Resources.insert_after}" HorizontalAlignment="Left" Margin="780,405,0,0" VerticalAlignment="Top" Width="147" Height="26" Click="InsertAfterButton_Click"/>
         <Button x:Name="RemoveButton" Content="{x:Static lang:Resources.remove}" HorizontalAlignment="Left" Margin="627,436,0,0" VerticalAlignment="Top" Width="300" Height="26" Click="RemoveButton_Click" IsEnabled="{Binding ElementName=VehicleListBox, Path=SelectedItems.Count}"/>

@@ -797,5 +797,9 @@ namespace LocoSwap
         {
             CollectionViewSource.GetDefaultView(AvailableVehicleListBox.ItemsSource).Refresh();
         }
+        public void OpenManual_Click(object sender, RoutedEventArgs e)
+        {
+            Utilities.OpenManual();
+        }
     }
 }

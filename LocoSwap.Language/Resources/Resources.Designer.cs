@@ -610,6 +610,15 @@ namespace LocoSwap.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Open manual.
+        /// </summary>
+        public static string open_manual {
+            get {
+                return ResourceManager.GetString("open_manual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Open scenario directory.
         /// </summary>
         public static string open_scenario_directory {

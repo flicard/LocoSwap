@@ -294,6 +294,9 @@
   <data name="on_all_stock" xml:space="preserve">
     <value>à tous les véhicules</value>
   </data>
+  <data name="open_manual" xml:space="preserve">
+    <value>Ouvrir le manuel</value>
+  </data>
   <data name="open_scenario_directory" xml:space="preserve">
     <value>Ouvrir le dossier du scénario</value>
   </data>
