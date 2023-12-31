@@ -133,13 +133,13 @@
     <value>Применить все правила</value>
   </data>
   <data name="archive_rest" xml:space="preserve">
-    <value>Архивируйте все маршруты, кроме выбранного</value>
+    <value>Все маршруты кроме выбранных</value>
   </data>
   <data name="archive_toggle" xml:space="preserve">
-    <value>Архив/Неархив</value>
+    <value>Архивировать маршрут / Отменить</value>
   </data>
   <data name="archive_without_db_loaded_prompt_message" xml:space="preserve">
-    <value>Вы уверены, что хотите архивировать маршруты, пока база данных сценариев еще сканируется? Есть риск потерять статусы некоторых сценарных соревнований. Лучше нажать "нет" и подождать несколько секунд, прежде чем снова пытаться архивировать.</value>
+    <value>Вы уверены, что хотите архивировать маршруты, пока база данных сценариев еще сканируется? Есть риск потерять некоторые статусы завершения. Лучше нажать "нет" и подождать несколько секунд, прежде чем снова пытаться архивировать.</value>
   </data>
   <data name="archive_without_db_loaded_prompt_title" xml:space="preserve">
     <value>Вы уверены, что хотите архивировать сейчас?</value>
@@ -157,7 +157,7 @@
     <value>Изменить номер</value>
   </data>
   <data name="check_all_scenario_consists" xml:space="preserve">
-    <value>Проверяйте поезда во всех сценариях при выборе маршрута (это будет медленно!).</value>
+    <value>Проверка поездов во всех сценариях при выборе маршрута (это медленно!).</value>
   </data>
   <data name="clear_vehicles" xml:space="preserve">
     <value>Очистить</value>
@@ -175,7 +175,7 @@
     <value>Успешно</value>
   </data>
   <data name="completion_notcompleted" xml:space="preserve">
-    <value>Не завершён</value>
+    <value />
   </data>
   <data name="completion_notindb" xml:space="preserve">
     <value />
@@ -191,6 +191,9 @@
   </data>
   <data name="delete_scenarios" xml:space="preserve">
     <value>Удалить сценарии</value>
+  </data>
+  <data name="do_not_auto_archive_workshop_routes" xml:space="preserve">
+    <value>Автоархивация не должна затрагивать маршруты Workshop</value>
   </data>
   <data name="duration" xml:space="preserve">
     <value>Продолжительность</value>
@@ -217,7 +220,7 @@
     <value>Развёрнут?</value>
   </data>
   <data name="game_save_date" xml:space="preserve">
-    <value>Сохранить дату</value>
+    <value>Дата сохранения</value>
   </data>
   <data name="hide_played_scenarios" xml:space="preserve">
     <value>Скрыть сыгранные сценарии</value>
@@ -311,6 +314,9 @@
   </data>
   <data name="on_all_stock" xml:space="preserve">
     <value>во всём подвижном составе</value>
+  </data>
+    <data name="open_manual" xml:space="preserve">
+    <value>Открыть руководство</value>
   </data>
   <data name="open_scenario_directory" xml:space="preserve">
     <value>Открыть папку сценария</value>
