@@ -406,7 +406,7 @@
     <value>Укажите путь к Train Simulator</value>
   </data>
   <data name="select_vehicle_number" xml:space="preserve">
-    <value>Выбор номера автомобиля</value>
+    <value>Выбор номера</value>
   </data>
   <data name="settings" xml:space="preserve">
     <value>Настройки</value>
