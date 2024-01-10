@@ -346,7 +346,7 @@
     <value>Alle identieke vervangen</value>
   </data>
   <data name="replace_with" xml:space="preserve">
-    <value>Door ... vervangen</value>
+    <value>Vervangen door ...</value>
   </data>
   <data name="route" xml:space="preserve">
     <value>Route</value>
@@ -355,10 +355,10 @@
     <value>Regel</value>
   </data>
   <data name="rule_find" xml:space="preserve">
-    <value>Naar ... zoeken</value>
+    <value>Zoeken naar ...</value>
   </data>
   <data name="rule_replace" xml:space="preserve">
-    <value>Door ... vervangen</value>
+    <value>Vervangen door ...</value>
   </data>
   <data name="save" xml:space="preserve">
     <value>Opslaan</value>
