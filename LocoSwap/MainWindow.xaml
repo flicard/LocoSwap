@@ -112,53 +112,46 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="{x:Static lang:Resources.name}" Width="350" DisplayMemberBinding="{Binding Name}" />
-
                     <GridViewColumn Header="Backups" Width="auto">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="..." Click="Button_Click">
-                                    <Button.Style>
-                                        <Style TargetType="{x:Type Button}">
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding Backups.Count}" Value="1">
-                                                    <Setter Property="Visibility" Value="Collapsed" />
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Button.Style>
-                                    <Button.ContextMenu>
-                                        <ContextMenu ItemsSource="{Binding Backups}">
-                                            <ContextMenu.ItemContainerStyle>
-                                                <Style TargetType="{x:Type MenuItem}">
-                                                    <Setter Property="HeaderTemplate">
-                                                        <Setter.Value>
-                                                            <DataTemplate>
-                                                                <TextBlock>
-                                                                    <TextBlock.Text>
-                                                                        <MultiBinding StringFormat="{}{1} (edited {0})">
-                                                                            <Binding Path="SystemDate" />
-                                                                            <Binding Path="NamingDate" />
-                                                                        </MultiBinding>
-                                                                    </TextBlock.Text>
-                                                                </TextBlock>
-                                                            </DataTemplate>
-                                                        </Setter.Value>
-                                                    </Setter>
-                                                </Style>
-                                            </ContextMenu.ItemContainerStyle>
-                                        </ContextMenu>
-                                    </Button.ContextMenu>
-                                </Button>
+                                <Grid>
+                                    <ToggleButton x:Name="toggleButton" Content="...">
+                                        <ToggleButton.Style>
+                                            <Style TargetType="{x:Type ToggleButton}">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding Backups.Count}" Value="1">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </ToggleButton.Style>
+                                    </ToggleButton>
+
+                                    <Popup IsOpen="{Binding ElementName=toggleButton, Path=IsChecked}" PlacementTarget="{Binding ElementName=toggleButton}" StaysOpen="False">
+                                        <Border BorderThickness="1">
+                                            <ItemsControl ItemsSource="{Binding Backups}">
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Button>
+                                                            <TextBlock>
+                                                                <TextBlock.Text>
+                                                                    <MultiBinding StringFormat="{}{1} (edited {0})">
+                                                                        <Binding Path="SystemDate" />
+                                                                        <Binding Path="NamingDate" />
+                                                                    </MultiBinding>
+                                                                </TextBlock.Text>
+                                                            </TextBlock>
+                                                        </Button>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </Border>
+                                    </Popup>
+                                </Grid>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-
-
-
-
-
-
-
                     <GridViewColumn Header="{x:Static lang:Resources.id}" Width="75" DisplayMemberBinding="{Binding Id}" />
                     <GridViewColumn Header="{x:Static lang:Resources.player_train_name}" Width="auto" DisplayMemberBinding="{Binding PlayerTrainName}" />
                     <GridViewColumn Header="{x:Static lang:Resources.duration}" Width="auto" DisplayMemberBinding="{Binding Duration}" />
