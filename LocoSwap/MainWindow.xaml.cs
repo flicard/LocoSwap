@@ -409,5 +409,11 @@ namespace LocoSwap
                 Refresh_Scenario_List();
             }
         }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var button = (Button)sender;
+            button.ContextMenu.IsOpen = true;
+        }
+
     }
 }
