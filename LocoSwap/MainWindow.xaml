@@ -112,6 +112,35 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn Header="{x:Static lang:Resources.name}" Width="350" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Backups" Width="auto">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <ComboBox ItemsSource="{Binding Backups}" SelectedValue="{Binding SelectedBackup, Mode=TwoWay}" SelectionChanged="Backups_SelectionChanged">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock>
+                                                <TextBlock.Text>
+                                                    <MultiBinding StringFormat="{}{1} (edited {0})">
+                                                        <Binding Path="SystemDate" />
+                                                        <Binding Path="NamingDate" />
+                                                    </MultiBinding>
+                                                </TextBlock.Text>
+                                            </TextBlock>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                    <ComboBox.Style>
+                                        <Style TargetType="ComboBox">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Backups.Count}" Value="1">
+                                                    <Setter Property="Visibility" Value="Collapsed" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </ComboBox.Style>
+                                </ComboBox>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                     <GridViewColumn Header="{x:Static lang:Resources.id}" Width="75" DisplayMemberBinding="{Binding Id}" />
                     <GridViewColumn Header="{x:Static lang:Resources.player_train_name}" Width="auto" DisplayMemberBinding="{Binding PlayerTrainName}" />
                     <GridViewColumn Header="{x:Static lang:Resources.duration}" Width="auto" DisplayMemberBinding="{Binding Duration}" />

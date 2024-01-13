@@ -72,6 +72,8 @@ namespace LocoSwap
             }
         }
         public bool IsArchived { get; set; } = false;
+        public List<ScenarioBackup> Backups { get; set; } = new List<ScenarioBackup>();
+        public ScenarioBackup SelectedBackup { get => Backups.FirstOrDefault(backup => backup.NamingDate == null); set => Console.Write("Lol"); }
         public string[] VehiclesInvolvedInConsistOperation { get; set; }
         public string ApFileName { get; set; } = "";
         public string TooltipText { get => (ApFileName != "" ? Language.Resources.scenario_in_ap + Environment.NewLine : "") + Description; }
@@ -155,6 +157,50 @@ namespace LocoSwap
                     }
 
                     ScenarioProperties = XmlDocumentLoader.Load(pathToLoad);
+
+                    // Look for backups
+                    // Get the list of files in the directory with the specified format
+                    // Example file name format: ScenarioPropertiesBackup-20230825-182552
+
+                    string[] files = Directory.GetFiles(ScenarioDirectory, "ScenarioPropertiesBackup-*.xml");
+
+                    // Initialize the array
+                    //Backups = new Tuple<DateTime, DateTime>[files.Length];
+                    Backups.Add(new ScenarioBackup
+                    {
+                        SystemDate = File.GetLastWriteTime(pathToLoad),
+                    });
+
+                    // Loop through the files to extract dates and fill the array
+                    for (int i = 0; i < files.Length; i++)
+                    {
+                        string fileNameFormat = "yyyyMMdd-HHmmss";
+
+                        // Extract the date from the file name
+                        string fileName = Path.GetFileName(files[i]);
+                        string dateSubstring = fileName.Substring(fileName.IndexOf('-') + 1, 15);
+
+                        DateTime fileNameDate = new DateTime(1970, 1, 1);
+                        try
+                        {
+                            fileNameDate = DateTime.ParseExact(dateSubstring, fileNameFormat, null);
+                        }
+                        catch (FormatException)
+                        {
+                            // Scenario backup file has a malformed date in its name, leave it to 1970
+                        }
+
+                        // Get the system date of the file
+                        DateTime fileSystemDate = File.GetLastWriteTime(files[i]);
+
+                        // Fill the array with the two dates
+                        //Backups[i] = Tuple.Create(fileNameDate, fileSystemDate);
+                        Backups.Add(new ScenarioBackup
+                        {
+                            SystemDate = fileSystemDate,
+                            NamingDate = fileNameDate,
+                        });
+                    }
                 }
 
                 // Parse XML
@@ -896,4 +942,10 @@ namespace LocoSwap
             }
         }
     }
+}
+public class ScenarioBackup
+{
+    public DateTime SystemDate { get; set; }
+    // NamingDate being null means this is the active version
+    public DateTime? NamingDate { get; set; }
 }

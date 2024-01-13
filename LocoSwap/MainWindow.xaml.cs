@@ -107,7 +107,11 @@ namespace LocoSwap
                 Scenarios.Clear();
             }
         }
+        private void Backups_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //Tuple<DateTime, DateTime> selectedBackup = sender as Tuple<DateTime, DateTime>;
 
+        }
         private void Refresh_Scenario_List()
         {
             Scenarios.Clear();
@@ -176,6 +180,7 @@ namespace LocoSwap
             Scenario scenario = (Scenario)ScenarioList.SelectedItem;
             new ScenarioEditWindow(routeId, scenario).Show();
         }
+
 
         private void OpenScenarioDirButton_Click(object sender, RoutedEventArgs e)
         {
