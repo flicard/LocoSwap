@@ -409,11 +409,17 @@ namespace LocoSwap
                 Refresh_Scenario_List();
             }
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var button = (Button)sender;
-            button.ContextMenu.IsOpen = true;
-        }
 
+        private void BackupsItem_Click(object sender, RoutedEventArgs e)
+        {
+            ScenarioBackup clickedBackup = (ScenarioBackup)((Button)sender).DataContext;
+
+            if (clickedBackup.NamingDate != null)
+            {
+                clickedBackup.SwitchToBackup();
+
+                Refresh_Scenario_List();
+            }
+        }
     }
 }

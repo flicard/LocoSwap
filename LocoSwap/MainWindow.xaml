@@ -116,7 +116,7 @@
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Grid>
-                                    <ToggleButton x:Name="toggleButton" Content="...">
+                                    <ToggleButton x:Name="toggleButton" Content="..." HorizontalAlignment="Center" Width="35">
                                         <ToggleButton.Style>
                                             <Style TargetType="{x:Type ToggleButton}">
                                                 <Style.Triggers>
@@ -133,7 +133,7 @@
                                             <ItemsControl ItemsSource="{Binding Backups}">
                                                 <ItemsControl.ItemTemplate>
                                                     <DataTemplate>
-                                                        <Button>
+                                                        <Button Click="BackupsItem_Click">
                                                             <TextBlock>
                                                                 <TextBlock.Text>
                                                                     <MultiBinding StringFormat="{}{1} (edited {0})">
@@ -152,6 +152,8 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
+
+
                     <GridViewColumn Header="{x:Static lang:Resources.id}" Width="75" DisplayMemberBinding="{Binding Id}" />
                     <GridViewColumn Header="{x:Static lang:Resources.player_train_name}" Width="auto" DisplayMemberBinding="{Binding PlayerTrainName}" />
                     <GridViewColumn Header="{x:Static lang:Resources.duration}" Width="auto" DisplayMemberBinding="{Binding Duration}" />

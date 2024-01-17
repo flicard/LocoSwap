@@ -168,6 +168,7 @@ namespace LocoSwap
                     //Backups = new Tuple<DateTime, DateTime>[files.Length];
                     Backups.Add(new ScenarioBackup
                     {
+                        Scenario = this,
                         SystemDate = File.GetLastWriteTime(pathToLoad),
                     });
 
@@ -197,6 +198,7 @@ namespace LocoSwap
                         //Backups[i] = Tuple.Create(fileNameDate, fileSystemDate);
                         Backups.Add(new ScenarioBackup
                         {
+                            Scenario = this,
                             SystemDate = fileSystemDate,
                             NamingDate = fileNameDate,
                         });
@@ -946,6 +948,51 @@ namespace LocoSwap
 public class ScenarioBackup
 {
     public DateTime SystemDate { get; set; }
+
     // NamingDate being null means this is the active version
     public DateTime? NamingDate { get; set; }
+
+    public LocoSwap.Scenario Scenario { get; set; }
+    public void SwitchToBackup()
+    {
+        if (NamingDate != null)
+        {
+            ScenarioBackup activeScenario = Scenario.Backups.FirstOrDefault(b => b.NamingDate == null);
+
+            CollisionSafeBackupRenaming(
+                Path.Combine(Scenario.ScenarioDirectory, "ScenarioProperties.xml"),
+                activeScenario.SystemDate
+                );
+            CollisionSafeBackupRenaming(
+                Path.Combine(Scenario.ScenarioDirectory, "Scenario.bin"),
+                activeScenario.SystemDate
+                );
+
+            File.Move(
+                Path.Combine(Scenario.ScenarioDirectory, $"ScenarioPropertiesBackup-{NamingDate:yyyyMMdd-HHmmss}.xml"),
+                Path.Combine(Scenario.ScenarioDirectory, $"ScenarioProperties.xml")
+                );
+            File.Move(
+                Path.Combine(Scenario.ScenarioDirectory, $"ScenarioBackup-{NamingDate:yyyyMMdd-HHmmss}.bin"),
+                Path.Combine(Scenario.ScenarioDirectory, $"Scenario.bin")
+                );
+        }
+    }
+
+    /**
+     * Backing up a scenario involves adding a date in the files'names.
+     * We make sure the date is not already taken by adding one second until we find a free name.
+     */
+    static private void CollisionSafeBackupRenaming(string filePath, DateTime date)
+    {
+        DateTime chosenDate = date;
+        while (File.Exists($"{Path.GetDirectoryName(filePath)}{Path.GetFileNameWithoutExtension(filePath)}Backup-{chosenDate:yyyyMMdd-HHmmss}.{Path.GetExtension(filePath)}"))
+        {
+            chosenDate = chosenDate.AddSeconds(1);
+        }
+        File.Move(
+            filePath,
+            Path.Combine(Path.GetDirectoryName(filePath), $"{Path.GetFileNameWithoutExtension(filePath)}Backup-{chosenDate:yyyyMMdd-HHmmss}{Path.GetExtension(filePath)}")
+        );
+    }
 }
