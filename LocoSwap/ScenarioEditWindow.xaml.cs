@@ -486,7 +486,7 @@ namespace LocoSwap
             consist.DetermineCompletenessAfterReplace();
         }
 
-        private async void SaveScenario()
+        private async void SaveScenario(bool disableStartingSave)
         {
             ViewModel.LoadingInformation = LocoSwap.Language.Resources.saving_scenario;
             ViewModel.LoadingProgress = 20;
@@ -494,7 +494,7 @@ namespace LocoSwap
             {
                 try
                 {
-                    ViewModel.Scenario.Save();
+                    ViewModel.Scenario.Save(disableStartingSave);
                 }
                 catch (Exception)
                 {
@@ -523,8 +523,24 @@ namespace LocoSwap
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            SaveScenario();
+            if (ViewModel.Scenario.HasStartingSave)
+            {
+                MessageBoxResult result = MessageBox.Show("TODO starting save blabla", "Désactiver le SS ?", MessageBoxButton.YesNoCancel);
 
+                switch (result)
+                {
+                    case MessageBoxResult.Yes:
+                        SaveScenario(true);
+                        break;
+
+                    case MessageBoxResult.No:
+                        SaveScenario(false);
+                        break;
+
+                    default:
+                        break;
+                }
+            }
         }
 
         private void AvailableVehicleNumberListButton_Click(object sender, RoutedEventArgs e)

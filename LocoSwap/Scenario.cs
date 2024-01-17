@@ -72,6 +72,7 @@ namespace LocoSwap
             }
         }
         public bool IsArchived { get; set; } = false;
+        public bool HasStartingSave { get; set; } = false;
         public List<ScenarioBackup> Backups { get; set; } = new List<ScenarioBackup>();
         public ScenarioBackup SelectedBackup { get => Backups.FirstOrDefault(backup => backup.NamingDate == null); set => Console.Write("Lol"); }
         public string[] VehiclesInvolvedInConsistOperation { get; set; }
@@ -134,7 +135,12 @@ namespace LocoSwap
                 {
                     ZipFile apFile = ZipFile.Read(ApFileName);
 
-                    ZipEntry scenarioPropertiesFile = apFile.Where(file => file.FileName == "Scenarios/" + id + "/ScenarioProperties.xml").FirstOrDefault();
+                    if (apFile.ContainsEntry($"Scenarios/{id}/StartingSave.bin"))
+                    {
+                        HasStartingSave = true;
+                    }
+
+                    ZipEntry scenarioPropertiesFile = apFile.Where(file => file.FileName == $"Scenarios/{id}/ScenarioProperties.xml").FirstOrDefault();
 
                     MemoryStream ms = new MemoryStream();
                     scenarioPropertiesFile.Extract(ms);
@@ -154,6 +160,11 @@ namespace LocoSwap
                     {
                         pathToLoad = Path.Combine(ScenarioDirectory, "ScenarioPropertiesLocoSwapOff.xml");
                         IsArchived = true;
+                    }
+
+                    if (File.Exists(Path.Combine(ScenarioDirectory, "StartingSave.bin")))
+                    {
+                        HasStartingSave = true;
                     }
 
                     ScenarioProperties = XmlDocumentLoader.Load(pathToLoad);
@@ -870,7 +881,7 @@ namespace LocoSwap
             return;
         }
 
-        public void Save()
+        public void Save(bool disableStartingSave)
         {
             if (ApFileName != "")
             {
@@ -934,6 +945,15 @@ namespace LocoSwap
 
             File.Copy(Path.Combine(Utilities.GetTempDir(), "Scenario.bin"), scenarioFileName, true);
             File.Copy(propertiesXmlPath, scenarioPropertiesFileName, true);
+
+            if (disableStartingSave && HasStartingSave)
+            {
+                File.Move(
+                    Path.Combine(ScenarioDirectory, "StartingSave.bin"),
+                    Path.Combine(ScenarioDirectory, "StartingSave.bin.LSoff")
+                    );
+                HasStartingSave = false;
+            }
         }
 
         public void Delete()
