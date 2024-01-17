@@ -923,11 +923,11 @@ namespace LocoSwap
 
             TsSerializer.Save(ScenarioXml, Path.Combine(Utilities.GetTempDir(), "Scenario.bin"));
 
-            var timestamp = DateTime.Now.ToString("yyyyMMdd-HHmmss");
-            var scenarioFileName = Path.Combine(ScenarioDirectory, "Scenario.bin");
-            var scenarioBackupFileName = Path.Combine(ScenarioDirectory, string.Format("ScenarioBackup-{0}.bin", timestamp));
-            var scenarioPropertiesFileName = Path.Combine(ScenarioDirectory, "ScenarioProperties.xml");
-            var scenarioPropertiesBackupFileName = Path.Combine(ScenarioDirectory, string.Format("ScenarioPropertiesBackup-{0}.xml", timestamp));
+            string timestamp = File.GetLastWriteTime(Path.Combine(ScenarioDirectory, "ScenarioProperties.xml")).ToString("yyyyMMdd-HHmmss");
+            string scenarioFileName = Path.Combine(ScenarioDirectory, "Scenario.bin");
+            string scenarioBackupFileName = Path.Combine(ScenarioDirectory, string.Format("ScenarioBackup-{0}.bin", timestamp));
+            string scenarioPropertiesFileName = Path.Combine(ScenarioDirectory, "ScenarioProperties.xml");
+            string scenarioPropertiesBackupFileName = Path.Combine(ScenarioDirectory, string.Format("ScenarioPropertiesBackup-{0}.xml", timestamp));
 
             File.Copy(scenarioFileName, scenarioBackupFileName);
             File.Copy(scenarioPropertiesFileName, scenarioPropertiesBackupFileName);
