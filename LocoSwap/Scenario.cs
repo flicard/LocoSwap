@@ -986,7 +986,7 @@ public class ScenarioBackup
     static private void CollisionSafeBackupRenaming(string filePath, DateTime date)
     {
         DateTime chosenDate = date;
-        while (File.Exists($"{Path.GetDirectoryName(filePath)}{Path.GetFileNameWithoutExtension(filePath)}Backup-{chosenDate:yyyyMMdd-HHmmss}.{Path.GetExtension(filePath)}"))
+        while (File.Exists(Path.Combine(Path.GetDirectoryName(filePath), $"{Path.GetFileNameWithoutExtension(filePath)}Backup-{chosenDate:yyyyMMdd-HHmmss}{Path.GetExtension(filePath)}")))
         {
             chosenDate = chosenDate.AddSeconds(1);
         }
