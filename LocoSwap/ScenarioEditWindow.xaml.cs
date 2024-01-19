@@ -486,7 +486,7 @@ namespace LocoSwap
             consist.DetermineCompletenessAfterReplace();
         }
 
-        private async void SaveScenario(bool disableStartingSave)
+        private async void SaveScenario(bool disableStartingSave = false)
         {
             ViewModel.LoadingInformation = LocoSwap.Language.Resources.saving_scenario;
             ViewModel.LoadingProgress = 20;
@@ -540,6 +540,10 @@ namespace LocoSwap
                     default:
                         break;
                 }
+            }
+            else
+            {
+                SaveScenario();
             }
         }
 
